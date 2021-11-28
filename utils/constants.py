@@ -6,6 +6,6 @@ error_messages = {
 
 
 # Zendesk API details
-login_id = "an721@scarletmail.rutgers.edu/token"
-api_token = "QgwDnq4Cc9xuoK7uDVJOFVJyA1DoEcgGEGwvE4ov"
-subdomain_url = "https://zccanirudhnegi.zendesk.com"
+login_id = "<user_id>/token"
+api_token = "<api_token>"
+subdomain_url = "https://<subdomain>.zendesk.com"
