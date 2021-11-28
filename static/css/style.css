@@ -51,3 +51,18 @@ body {
 .sticky + .content {
   padding-top: 60px;
 }
+
+td{
+    border: 1px solid black;
+    word-break: break-all;
+    width: 400px;
+    text-align: center;
+}
+
+.ticket_rows{
+    font-size: 18px;
+}
+
+.container{
+    width:90%;
+}

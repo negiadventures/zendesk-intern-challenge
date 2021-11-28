@@ -1,12 +1,12 @@
 import requests
 
-from utils import constants
+from utils import conf
 
 
 class Request:
     def __init__(self):
-        self.login_id = constants.login_id
-        self.token = constants.api_token
+        self.login_id = conf.login_id
+        self.token = conf.api_token
 
     def get(self, url):
         try:

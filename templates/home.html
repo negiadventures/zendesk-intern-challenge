@@ -4,28 +4,29 @@
 
 <div class="content">
     <div class="container">
-        <p>Select one option: </p>
         <br class="row">
-        <a href="/tickets">
-            <p>Show All Tickets</p>
-        </a>
         <br/>
         <center>
-        <form method="post" action="/ticket">
             <table>
                 <tr>
-                    <td>Ticket ID</td>
+                    <td colspan="2"><a href="/tickets">
+                        Show All Tickets
+                    </a></td>
                 </tr>
                 <tr>
-                    <td><input type='text' name='ticket_id'></td>
+                    <td colspan="2"> or </td>
                 </tr>
-                <tr>
-                    <td><input type="submit" value="View Ticket"></td>
-                </tr>
+                <form method="post" action="/ticket">
 
+                    <tr>
+                        <td colspan="2">Enter Ticket ID</td>
+                    </tr>
+                    <tr>
+                        <td style="padding: 10px;"><input type='text' name='ticket_id'></td><td><input type="submit" value="View Ticket"></td>
+                    </tr>
+                </form>
             </table>
-        </form>
-            </center>
+        </center>
     </div>
 </div>
 

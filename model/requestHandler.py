@@ -1,12 +1,12 @@
 import datetime
 
-from utils import constants
+from utils import constants, conf
 from utils.request_util import Request
 
 
 class RequestHandler:
     def __init__(self):
-        self.url = constants.subdomain_url
+        self.url = conf.subdomain_url
         self.data = {}
 
     def get_all_tickets(self):
@@ -23,7 +23,7 @@ class RequestHandler:
             new_url = self.data["next_page"]
             next_page.append(new_url)
             response = Request().get(url=new_url)
-            new_data = response.json()
+            new_data = response
             self.data["tickets"].extend(new_data["tickets"])
         for i in range(len(self.data["tickets"])):
             self.data["tickets"][i]["created_at"] = self.format_date(self.data['tickets'][i]['created_at'])

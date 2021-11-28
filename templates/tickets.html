@@ -4,9 +4,26 @@
 
 <div class="content">
     <div class="container">
-        <a href="/">Home</a>
-        <h2>All Tickets</h2>
-        <p>{{ data }}</p>
+        <a href="/">Home</a> >> All Tickets
+        <br/>
+        <br class="row">
+        <table>
+            <tr>
+                {% for key in ['id','url','created_at','updated_at','subject','priority','status'] %}
+                <td>{{ ' '.join(key.split('_')).title() }}</td>
+                {% endfor %}
+            </tr>
+            {% for ticket in data['tickets'] %}
+            <tr class='ticket_rows'>
+                <td><a href="/ticket/{{ ticket['id'] }}">{{ ticket['id'] }}</a></td>
+                {% for key in ['url','created_at','updated_at','subject','priority','status'] %}
+                    <td>{{ ticket[key] }}</td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+        <br/>
+
     </div>
 </div>
 
