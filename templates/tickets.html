@@ -17,11 +17,74 @@
             <tr class='ticket_rows'>
                 <td><a href="/ticket/{{ ticket['id'] }}">{{ ticket['id'] }}</a></td>
                 {% for key in ['url','created_at','updated_at','subject','priority','status'] %}
-                    <td>{{ ticket[key] }}</td>
+                <td>{{ ticket[key] }}</td>
                 {% endfor %}
             </tr>
             {% endfor %}
         </table>
+        <br/>
+        <center>
+            <table>
+                <tr>
+                    <td class='pages_cell' style='border:none;'>
+                        {% if page_num==1 %}
+                        &lt;&lt;
+                        {% else %}
+                        <a href="/tickets"> &lt;&lt; </a>
+                        {% endif %}
+                    </td>
+                    <td class='pages_cell' style='border:none;'>
+                        {% if page_num==1 %}
+                        &lt;
+                        {% else %}
+                        <a href="/tickets?page={{ page_num-1 }}"> &lt; </a>
+                        {% endif %}
+                    </td>
+                    {% if page_num == 1 %}
+                        {% set fpnum = 1 %}
+                        {% if total_pages < 3 %}
+                            {% set lpnum = total_pages+1 %}
+                        {% else %}
+                            {% set lpnum = 4 %}
+                        {% endif %}
+                    {% elif page_num == total_pages %}
+                        {% if total_pages < 3 %}
+                            {% set fpnum = total_pages-1 %}
+                        {% else %}
+                            {% set fpnum = total_pages-2 %}
+                        {% endif %}
+                        {% set lpnum = total_pages+1 %}
+                    {% else %}
+                        {% set fpnum = page_num-1 %}
+                        {% set lpnum = page_num+2 %}
+                    {% endif %}
+
+                    {% for pagenum in range(fpnum,lpnum) %}
+                    <td class='pages_cell'>
+                        {% if pagenum == page_num %}
+                        <div style="background-color: black; color: white;">{{ pagenum }}</div>
+                        {% else %}
+                        <a href="/tickets?page={{ pagenum }}"> {{ pagenum }} </a></td>
+                    {% endif %}
+                    {% endfor %}
+                    <td class='pages_cell' style='border:none;'>
+                        {% if page_num==total_pages %}
+                        &gt
+                        {% else %}
+                        <a href="/tickets?page={{ page_num+1 }}"> &gt; </a>
+                        {% endif %}
+                    </td>
+                    <td class='pages_cell' style='border:none;'>
+                        {% if page_num==total_pages %}
+                        &gt;&gt;
+                        {% else %}
+                        <a href="/tickets?page={{ total_pages }}"> &gt;&gt; </a>
+                        {% endif %}
+                    </td>
+                </tr>
+            </table>
+            Showing Page {{ page_num }} of {{ total_pages }}
+        </center>
         <br/>
 
     </div>
