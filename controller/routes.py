@@ -14,7 +14,6 @@ def home():
 @urls.route('/tickets')
 def get_all_tickets():
     tickets_data = RequestHandler().get_all_tickets()
-    tickets_data['tickets'] = tickets_data['tickets']
     if isinstance(tickets_data, int):
         return render_template('error.html', message=const.error_messages[str(tickets_data)])
     page_num = request.args.get('page')
