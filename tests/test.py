@@ -31,11 +31,11 @@ class RoutesTests(unittest.TestCase):
     def test_fetch_all_tickets(self):  # Sample json ticket data for bulk tickets
         response = self.app.get('/tickets', follow_redirects=True)
         self.assertEqual(response.status_code, 200)
-        self.assertTrue('zccanirudhnegi' in response.get_data(as_text=True))
+        self.assertTrue('zendesk.com' in response.get_data(as_text=True))
         # with page number
         response = self.app.get('/tickets?page=2', follow_redirects=True)
         self.assertEqual(response.status_code, 200)
-        self.assertTrue('zccanirudhnegi' in response.get_data(as_text=True))
+        self.assertTrue('zendesk.com' in response.get_data(as_text=True))
         # with page number > total pages
         response = self.app.get('/tickets?page=10000', follow_redirects=True)
         self.assertEqual(response.status_code, 200)
@@ -49,7 +49,7 @@ class RoutesTests(unittest.TestCase):
         # with ticket id as post request
         response = self.app.post('/ticket', follow_redirects=True, data={'ticket_id': 2})
         self.assertEqual(response.status_code, 200)
-        self.assertTrue('zccanirudhnegi' in response.get_data(as_text=True))
+        self.assertTrue('zendesk.com' in response.get_data(as_text=True))
         # invalid ticket id
         response = self.app.post('/ticket', follow_redirects=True, data={'ticket_id': -1})
         self.assertEqual(response.status_code, 200)
@@ -70,12 +70,12 @@ class RequestHandlerTests(unittest.TestCase):
     @patch('utils.conf.subdomain_url')
     def test_get_all_tickets(self, url):
         # valid case
-        url.return_value = MagicMock(status_code=200, response='https://zccanirudhnegi.zendesk.com')
+        url.return_value = MagicMock(status_code=200, response='https://zendesk.com.zendesk.com')
         response = requestHandler.RequestHandler(url.return_value.response, api=const.api_single_ticket).get_all_tickets()
         self.assertIsInstance(response, dict)
-        self.assertTrue('zccanirudhnegi' in str(response))
+        self.assertTrue('zendesk.com' in str(response))
         # different protocol (http instead of https)
-        url.return_value = MagicMock(status_code=200, response='http://zccanirudhnegi.zendesk.com')
+        url.return_value = MagicMock(status_code=200, response='http://zendesk.com.zendesk.com')
         response = requestHandler.RequestHandler(url.return_value.response).get_all_tickets()
         self.assertIsInstance(response, int)
         self.assertEqual(response, 403)
@@ -85,17 +85,17 @@ class RequestHandlerTests(unittest.TestCase):
         self.assertIsInstance(response, int)
         self.assertEqual(response, 404)
         # invalid api
-        url.return_value = MagicMock(status_code=200, response='https://zccanirudhnegi.zendesk.com')
+        url.return_value = MagicMock(status_code=200, response='https://zendesk.com.zendesk.com')
         response = requestHandler.RequestHandler(url.return_value.response, api="/api/p1/tickets").get_all_tickets()
         self.assertIsInstance(response, int)
         self.assertEqual(response, 404)
         # invalid domain
-        url.return_value = MagicMock(status_code=200, response='https://zccanirudhnegi.zendeskks.com')
+        url.return_value = MagicMock(status_code=200, response='https://zendesk.com.zendeskks.com')
         response = requestHandler.RequestHandler(url.return_value.response).get_all_tickets()
         self.assertIsInstance(response, int)
         self.assertEqual(response, 500)
         # different port
-        url.return_value = MagicMock(status_code=200, response='https://zccanirudhnegi.zendesk.com:80')
+        url.return_value = MagicMock(status_code=200, response='https://zendesk.com.zendesk.com:80')
         response = requestHandler.RequestHandler(url.return_value.response).get_all_tickets()
         self.assertIsInstance(response, int)
         self.assertEqual(response, 500)
@@ -103,12 +103,12 @@ class RequestHandlerTests(unittest.TestCase):
     @patch('utils.conf.subdomain_url')
     def test_get_ticket_by_id(self, url):
         # valid case
-        url.return_value = MagicMock(status_code=200, response='https://zccanirudhnegi.zendesk.com')
+        url.return_value = MagicMock(status_code=200, response='https://zendesk.com.zendesk.com')
         response = requestHandler.RequestHandler(url.return_value.response, api=const.api_single_ticket).get_ticket_by_id(ticket_id=1)
         self.assertIsInstance(response, dict)
-        self.assertTrue('zccanirudhnegi' in str(response))
+        self.assertTrue('zendesk.com' in str(response))
         # different protocol (http instead of https)
-        url.return_value = MagicMock(status_code=200, response='http://zccanirudhnegi.zendesk.com')
+        url.return_value = MagicMock(status_code=200, response='http://zendesk.com.zendesk.com')
         response = requestHandler.RequestHandler(url.return_value.response).get_ticket_by_id(1)
         self.assertIsInstance(response, int)
         self.assertEqual(response, 403)
@@ -118,17 +118,17 @@ class RequestHandlerTests(unittest.TestCase):
         self.assertIsInstance(response, int)
         self.assertEqual(response, 404)
         # invalid api
-        url.return_value = MagicMock(status_code=200, response='https://zccanirudhnegi.zendesk.com')
+        url.return_value = MagicMock(status_code=200, response='https://zendesk.com.zendesk.com')
         response = requestHandler.RequestHandler(url.return_value.response, api="/api/v2/ticket/").get_ticket_by_id(1)
         self.assertIsInstance(response, int)
         self.assertEqual(response, 404)
         # invalid domain
-        url.return_value = MagicMock(status_code=200, response='https://zccanirudhnegi.zendeskks.com')
+        url.return_value = MagicMock(status_code=200, response='https://zendesk.com.zendeskks.com')
         response = requestHandler.RequestHandler(url.return_value.response).get_ticket_by_id(1)
         self.assertIsInstance(response, int)
         self.assertEqual(response, 500)
         # different port
-        url.return_value = MagicMock(status_code=200, response='https://zccanirudhnegi.zendesk.com:80')
+        url.return_value = MagicMock(status_code=200, response='https://zendesk.com.zendesk.com:80')
         response = requestHandler.RequestHandler(url.return_value.response).get_ticket_by_id(1)
         self.assertIsInstance(response, int)
         self.assertEqual(response, 500)
@@ -146,22 +146,22 @@ class RequestTests(unittest.TestCase):
     @patch('utils.conf.subdomain_url')
     def test_get(self, url):
         # valid case
-        url.return_value = MagicMock(status_code=200, response='https://zccanirudhnegi.zendesk.com')
+        url.return_value = MagicMock(status_code=200, response='https://zendesk.com.zendesk.com')
         response = req.Request().get(url=url.return_value.response + "/api/v2/tickets.json")
         self.assertIsInstance(response, dict)
-        self.assertTrue('zccanirudhnegi' in str(response))
+        self.assertTrue('zendesk.com' in str(response))
         # invalid token
-        url.return_value = MagicMock(status_code=200, response='https://zccanirudhnegi.zendesk.com')
+        url.return_value = MagicMock(status_code=200, response='https://zendesk.com.zendesk.com')
         response = req.Request(api_token='DUMMY_TOKEN').get(url=url.return_value.response + "/api/v2/tickets.json")
         self.assertIsInstance(response, int)
         self.assertEqual(response, 401)
         # invalid login_id
-        url.return_value = MagicMock(status_code=200, response='https://zccanirudhnegi.zendesk.com')
+        url.return_value = MagicMock(status_code=200, response='https://zendesk.com.zendesk.com')
         response = req.Request(login_id='DUMMY_LOGIN_ID').get(url=url.return_value.response + "/api/v2/tickets.json")
         self.assertIsInstance(response, int)
         self.assertEqual(response, 401)
         # different protocol
-        url.return_value = MagicMock(status_code=200, response='http://zccanirudhnegi.zendesk.com')
+        url.return_value = MagicMock(status_code=200, response='http://zendesk.com.zendesk.com')
         response = req.Request().get(url=url.return_value.response + "/api/v2/tickets.json")
         self.assertIsInstance(response, int)
         self.assertEqual(response, 403)
@@ -171,17 +171,17 @@ class RequestTests(unittest.TestCase):
         self.assertIsInstance(response, int)
         self.assertEqual(response, 404)
         # invalid api
-        url.return_value = MagicMock(status_code=200, response='https://zccanirudhnegi.zendesk.com')
+        url.return_value = MagicMock(status_code=200, response='https://zendesk.com.zendesk.com')
         response = req.Request().get(url=url.return_value.response + "/api/v2/ticketsss.json")
         self.assertIsInstance(response, int)
         self.assertEqual(response, 404)
         # invalid domain
-        url.return_value = MagicMock(status_code=200, response='https://zccanirudhnegi.zendeskks.com')
+        url.return_value = MagicMock(status_code=200, response='https://zendesk.com.zendeskks.com')
         response = req.Request().get(url=url.return_value.response + "/api/v2/tickets.json")
         self.assertIsInstance(response, int)
         self.assertEqual(response, 500)
         # different port
-        url.return_value = MagicMock(status_code=200, response='https://zccanirudhnegi.zendesk.com:80')
+        url.return_value = MagicMock(status_code=200, response='https://zendesk.com.zendesk.com:80')
         response = req.Request().get(url=url.return_value.response + "/api/v2/tickets.json")
         self.assertIsInstance(response, int)
         self.assertEqual(response, 500)
