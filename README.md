@@ -86,12 +86,12 @@ Error handling is done to avoid any unwanted error to be displayed.
 ``` pip3 install coverage ``` <br/>
 2. Go to tests directory <br/>
 3. Run the tests : <br/>
-   ``` coverage run test.py ``` <br/>
+``` coverage run test.py ```
 <br><br>
 ![](assets/run_tests.png)
-<br>
+<br/>
 4. report the test coverage for all the scripts : <br/>
-   ``` coverage html */*.py ``` <br/>
+``` coverage html */*.py ```
 5. A new directory will be created named **'htmlcov'**<br/>
 6. Open **htmlcov/index.html** in a browser. It shows the % coverage of test cases in each script.
 
