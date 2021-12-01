@@ -84,24 +84,24 @@ Error handling is done to avoid any unwanted error to be displayed.
 ### RUNNING TEST CASES WITH COVERAGE MODULE:
 1. install coverage module: <br/>
 ```pip3 install coverage``` <br/>
-2. Go to tests directory <br/>
-3. Run the tests : <br/>
+2. Go to tests directory and run the tests : <br/>
+
 ```coverage run test.py```<br/>
 <br><br>
 ![](assets/run_tests.png)
 
-4. check the test coverage report: <br>
+3. check the test coverage report: <br>
 
 ```coverage report ../app.py ../controller/*.py ../model/*.py ../utils/*.py```
 
-5. You can also save the report as html: <br>
+4. You can also save the report as html: <br>
 
 ```coverage html ../app.py ../controller/*.py ../model/*.py ../utils/*.py```
 
-7. A new directory will be created named 'htmlcov'<br/>Open 'htmlcov/index.html' in a browser. It shows the % coverage of test cases in each script.
+5. A new directory will be created named 'htmlcov'<br/>Open 'htmlcov/index.html' in a browser. It shows the % coverage of test cases in each script.
 
 ![](assets/test_coverage_report.png)
 
-8. You can click on individual script for details.
+6. You can click on individual script for details.
 
 ![](assets/test_coverage_individual_script.png)
