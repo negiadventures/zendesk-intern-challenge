@@ -13,6 +13,11 @@ class Request:
             self.token = conf.api_token
 
     def get(self, url):
+        '''
+        This method calls the zendesk get api and returns data or error code (in case of error)
+        :param url: API url to be called
+        :return: response from zendesk API or error code
+        '''
         try:
             response = requests.get(url, auth=(self.login_id, self.token))
             if response.status_code != 200:

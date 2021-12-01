@@ -6,6 +6,10 @@ from utils.request_util import Request
 
 class RequestHandler:
     def __init__(self, url=None, api = None):
+        '''
+        :param url(optional): subdomain.domain for the api
+        :param api(optional): api to be called
+        '''
         self.url = url
         self.api = api
         if self.url is None:

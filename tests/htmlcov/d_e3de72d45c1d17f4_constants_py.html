@@ -58,28 +58,27 @@
 </header>
 <main id="source">
     <p class="pln"><span class="n"><a id="t1" href="#t1">1</a></span><span class="t"><span class="com"># Error messages with error codes</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t2" href="#t2">2</a></span><span class="t"><span class="com"># TODO: Update error messages for respective codes</span>&nbsp;</span><span class="r"></span></p>
-    <p class="run"><span class="n"><a id="t3" href="#t3">3</a></span><span class="t"><span class="nam">error_messages</span> <span class="op">=</span> <span class="op">{</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t4" href="#t4">4</a></span><span class="t">    <span class="str">'ERR_PAGE_NOT_FOUND'</span><span class="op">:</span> <span class="str">'What you were looking for is just not there.'</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t5" href="#t5">5</a></span><span class="t">    <span class="str">'ERR_NO_MORE_PAGES'</span><span class="op">:</span> <span class="str">'Sorry, no more pages. Please go back where you left of.'</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t6" href="#t6">6</a></span><span class="t">    <span class="str">'ERR_NO_TICKET_ID'</span><span class="op">:</span> <span class="str">'Sorry, You did not provided a ticket ID. Please try again with a valid ticket ID.'</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t7" href="#t7">7</a></span><span class="t">    <span class="str">'401'</span><span class="op">:</span> <span class="str">'Something went wrong! Please try again.'</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t8" href="#t8">8</a></span><span class="t">    <span class="str">'403'</span><span class="op">:</span> <span class="str">'Something went wrong! Please try again.'</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t9" href="#t9">9</a></span><span class="t">    <span class="str">'404'</span><span class="op">:</span> <span class="str">'Something went wrong! Please try again.'</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t10" href="#t10">10</a></span><span class="t">    <span class="str">'500'</span><span class="op">:</span> <span class="str">'Something went wrong! Please try again.'</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t11" href="#t11">11</a></span><span class="t">    <span class="str">'503'</span><span class="op">:</span> <span class="str">'Something went wrong! Please try again.'</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t12" href="#t12">12</a></span><span class="t"><span class="op">}</span>&nbsp;</span><span class="r"></span></p>
-    <p class="pln"><span class="n"><a id="t13" href="#t13">13</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
-    <p class="run"><span class="n"><a id="t14" href="#t14">14</a></span><span class="t"><span class="nam">page_size</span> <span class="op">=</span> <span class="num">25</span>&nbsp;</span><span class="r"></span></p>
-    <p class="run"><span class="n"><a id="t15" href="#t15">15</a></span><span class="t"><span class="nam">api_all_tickets</span> <span class="op">=</span> <span class="str">"/api/v2/tickets.json"</span>&nbsp;</span><span class="r"></span></p>
-    <p class="run"><span class="n"><a id="t16" href="#t16">16</a></span><span class="t"><span class="nam">api_single_ticket</span> <span class="op">=</span> <span class="str">"/api/v2/tickets/"</span>&nbsp;</span><span class="r"></span></p>
-    <p class="run"><span class="n"><a id="t17" href="#t17">17</a></span><span class="t"><span class="nam">format_json</span> <span class="op">=</span> <span class="str">".json"</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t2" href="#t2">2</a></span><span class="t"><span class="nam">error_messages</span> <span class="op">=</span> <span class="op">{</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t3" href="#t3">3</a></span><span class="t">    <span class="str">'ERR_PAGE_NOT_FOUND'</span><span class="op">:</span> <span class="str">'What you were looking for is just not there.'</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t4" href="#t4">4</a></span><span class="t">    <span class="str">'ERR_NO_MORE_PAGES'</span><span class="op">:</span> <span class="str">'Sorry, no more pages. Please go back where you left of.'</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t5" href="#t5">5</a></span><span class="t">    <span class="str">'ERR_NO_TICKET_ID'</span><span class="op">:</span> <span class="str">'Sorry, You did not provided a ticket ID. Please try again with a valid ticket ID.'</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t6" href="#t6">6</a></span><span class="t">    <span class="str">'401'</span><span class="op">:</span> <span class="str">'Unauthorized access! Please try again after checking configurations.'</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t7" href="#t7">7</a></span><span class="t">    <span class="str">'403'</span><span class="op">:</span> <span class="str">'Request is forbidden for the User! Please try again after checking configurations.'</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t8" href="#t8">8</a></span><span class="t">    <span class="str">'404'</span><span class="op">:</span> <span class="str">'Page not found! Please try again.'</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t9" href="#t9">9</a></span><span class="t">    <span class="str">'500'</span><span class="op">:</span> <span class="str">'Something went wrong! Please try again.'</span><span class="op">,</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t10" href="#t10">10</a></span><span class="t">    <span class="str">'503'</span><span class="op">:</span> <span class="str">'Something went wrong! Please try again.'</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t11" href="#t11">11</a></span><span class="t"><span class="op">}</span>&nbsp;</span><span class="r"></span></p>
+    <p class="pln"><span class="n"><a id="t12" href="#t12">12</a></span><span class="t">&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t13" href="#t13">13</a></span><span class="t"><span class="nam">page_size</span> <span class="op">=</span> <span class="num">25</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t14" href="#t14">14</a></span><span class="t"><span class="nam">api_all_tickets</span> <span class="op">=</span> <span class="str">"/api/v2/tickets.json"</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t15" href="#t15">15</a></span><span class="t"><span class="nam">api_single_ticket</span> <span class="op">=</span> <span class="str">"/api/v2/tickets/"</span>&nbsp;</span><span class="r"></span></p>
+    <p class="run"><span class="n"><a id="t16" href="#t16">16</a></span><span class="t"><span class="nam">format_json</span> <span class="op">=</span> <span class="str">".json"</span>&nbsp;</span><span class="r"></span></p>
 </main>
 <footer>
     <div class="content">
         <p>
             <a class="nav" href="index.html">&#xab; index</a> &nbsp; &nbsp; <a class="nav" href="https://coverage.readthedocs.io">coverage.py v6.2</a>,
-            created at 2021-12-01 13:32 -0500
+            created at 2021-12-01 15:31 -0500
         </p>
     </div>
 </footer>
