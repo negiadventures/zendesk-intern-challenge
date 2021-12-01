@@ -5,8 +5,11 @@ from utils.request_util import Request
 
 
 class RequestHandler:
-    def __init__(self):
-        self.url = conf.subdomain_url
+    def __init__(self, url=None, api = None):
+        self.url = url
+        self.api = api
+        if self.url is None:
+            self.url = conf.subdomain_url
         self.data = {}
 
     def get_all_tickets(self):
@@ -14,7 +17,9 @@ class RequestHandler:
         This method fetches all the tickets from Zendesk API for a user.
         :return: all tickets info in the account or error code in case of failure
         '''
-        response = Request().get(url=self.url + "/api/v2/tickets.json")
+        if self.api is None:
+            self.api = constants.api_all_tickets
+        response = Request().get(url=self.url + self.api)
         self.data = response
         if isinstance(self.data, int):
             return self.data
@@ -37,7 +42,10 @@ class RequestHandler:
         :param ticket_id: ID of the ticket to retrieve.
         :return: ticket info for which id was passed or error code in case of failure
         '''
-        response = Request().get(url=self.url + "/api/v2/tickets/" + str(ticket_id) + ".json")
+        if self.api is None:
+            self.api = constants.api_single_ticket
+        self.api += str(ticket_id) + constants.format_json
+        response = Request().get(url=self.url + self.api)
         self.data = response
         if isinstance(self.data, int):
             return self.data

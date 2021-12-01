@@ -12,7 +12,7 @@ def home():
 
 
 @urls.route('/tickets')
-def get_all_tickets():
+def fetch_all_tickets():
     tickets_data = RequestHandler().get_all_tickets()
     if isinstance(tickets_data, int):
         return render_template('error.html', message=const.error_messages[str(tickets_data)])
@@ -32,7 +32,7 @@ def get_all_tickets():
 
 @urls.route('/ticket', defaults={'ticket_id': None}, methods=["POST","GET"])
 @urls.route('/ticket/<ticket_id>', methods=["GET"])
-def get_ticket_by_id(ticket_id):
+def fetch_ticket_by_id(ticket_id):
     if request.method == "POST":
         ticket_id = request.form['ticket_id']
     if ticket_id is None:

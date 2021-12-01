@@ -12,3 +12,6 @@ error_messages = {
 }
 
 page_size = 25
+api_all_tickets = "/api/v2/tickets.json"
+api_single_ticket = "/api/v2/tickets/"
+format_json = ".json"
