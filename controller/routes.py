@@ -1,5 +1,6 @@
-from flask import request, render_template, Blueprint
 import math
+from flask import request, render_template, Blueprint
+
 import utils.constants as const
 from model.requestHandler import RequestHandler
 
@@ -29,16 +30,16 @@ def fetch_all_tickets():
         page_num = 1
     else:
         page_num = int(page_num)
-    total_page_num = math.ceil(len(tickets_data['tickets'])/const.page_size)
+    total_page_num = math.ceil(len(tickets_data['tickets']) / const.page_size)
     if page_num > total_page_num:
         return render_template('error.html', message=const.error_messages['ERR_NO_MORE_PAGES'])
     start_ticket_num = (page_num * const.page_size) - const.page_size
     end_ticket_num = start_ticket_num + const.page_size
     tickets_data['tickets'] = tickets_data['tickets'][start_ticket_num:end_ticket_num]
-    return render_template('tickets.html', data=tickets_data, page_num=page_num, total_pages = total_page_num)
+    return render_template('tickets.html', data=tickets_data, page_num=page_num, total_pages=total_page_num)
 
 
-@urls.route('/ticket', defaults={'ticket_id': None}, methods=["POST","GET"])
+@urls.route('/ticket', defaults={'ticket_id': None}, methods=["POST", "GET"])
 @urls.route('/ticket/<ticket_id>', methods=["GET"])
 def fetch_ticket_by_id(ticket_id):
     '''
@@ -63,4 +64,4 @@ def page_not_found(e):
     :param e: error message
     :return: View for error page
     '''
-    return render_template('error.html', message=const.error_messages['ERR_PAGE_NOT_FOUND']),404
+    return render_template('error.html', message=const.error_messages['ERR_PAGE_NOT_FOUND']), 404

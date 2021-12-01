@@ -41,7 +41,6 @@ class RoutesTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTrue('no more pages' in response.get_data(as_text=True))
 
-
     def test_fetch_by_id(self):
         # without ticket id as get request
         response = self.app.get('/ticket', follow_redirects=True)
@@ -61,6 +60,7 @@ class RoutesTests(unittest.TestCase):
         self.assertEqual(response.status_code, 404)
         response = self.app.get('/tickets/2', follow_redirects=True)
         self.assertEqual(response.status_code, 404)
+
 
 # Model TESTS
 class RequestHandlerTests(unittest.TestCase):
@@ -139,6 +139,7 @@ class RequestHandlerTests(unittest.TestCase):
     def test_format_date(self):
         date = requestHandler.RequestHandler().format_date('2021-12-01T01:30:56Z')
         self.assertEqual(date, '2021-12-01 01:30:56')
+
 
 # rest_util TESTS
 class RequestTests(unittest.TestCase):
