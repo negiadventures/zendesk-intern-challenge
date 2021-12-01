@@ -82,16 +82,17 @@ Error handling is done to avoid any unwanted error to be displayed.
 ![](assets/error.png)
 
 ### RUNNING TEST CASES WITH COVERAGE MODULE:
-1. install coverage module - pip3 install coverage
-2. Go to tests directory
-3. run the tests : <br/>
-   ``` coverage run test.py ```
+1. install coverage module: <br/>
+``` pip3 install coverage ``` <br/>
+2. Go to tests directory <br/>
+3. Run the tests : <br/>
+   ``` coverage run test.py ``` <br/>
 <br><br>
 ![](assets/run_tests.png)
 <br>
-4. report the test coverage for all the scripts : <br/> 
-   ``` coverage html */*.py ```
-5. A new directory will be created named **'htmlcov'**
+4. report the test coverage for all the scripts : <br/>
+   ``` coverage html */*.py ``` <br/>
+5. A new directory will be created named **'htmlcov'**<br/>
 6. Open **htmlcov/index.html** in a browser. It shows the % coverage of test cases in each script.
 <br><br>
 ![](assets/test_coverage_report.png)
