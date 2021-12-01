@@ -94,10 +94,10 @@ Error handling is done to avoid any unwanted error to be displayed.
    ``` coverage html */*.py ``` <br/>
 5. A new directory will be created named **'htmlcov'**<br/>
 6. Open **htmlcov/index.html** in a browser. It shows the % coverage of test cases in each script.
-<br><br>
+
 ![](assets/test_coverage_report.png)
-<br>
+<br/>
 7. You can click on individual script for details.
-<br><br>
+
 ![](assets/test_coverage_individual_script.png)
-<br>
+<br/>
