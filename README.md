@@ -42,7 +42,8 @@ python3 -m pip install -r requirements.txt
 ```
 ### Running the app
 1. Go to zendesk-intern-challenge directory.
-2. Run the following command to start the app:
+2. Change credentials in utils/conf.py file.
+3. Run the following command to start the app:
 ```
 python3 app.py
 ```
